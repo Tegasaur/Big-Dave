@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% block main %}
+<!-- ======= Hero Section ======= -->
+<section id="hero">
+    <div class="hero-container">
+        <div id="heroCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+
+            <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+            <div class="carousel-inner" role="listbox">
+
+                <!-- Slide 1 -->
+                <div class="carousel-item active" style="background: url(assets/img/slide/slide-1.jpg);">
+                    <div class="carousel-container">
+                        <div class="carousel-content">
+                            <h2 class="animated fadeInDown"><span>Big Dave's</span> Parts Shop</h2>
+                            <p class="animated fadeInUp">
+                                Quality part for your quality ride. These parts are created with your ride in mind. Have
+                                your pick
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!-- End Hero -->
+{% with messages = get_flashed_messages(with_categories = True) %}
+{% if messages %}
+{% for category, message in messages %}
+<div class="row alert alert-{{category}}"> {{ message }} </div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<!-- ======= About Section ======= -->
+<section id="about" class="about">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-lg-12 d-flex flex-column justify-content-center align-items-stretch">
+
+                <div class="content">
+                    <h3> The missing peice in your ride</h3>
+                    <p>
+                        Big dave's parts shop provides the best of the best created for you and your bike.
+                        We give matchless quality assistence with DIY projects and personal check ups.
+                    </p>
+                    <p class="font-italic">
+                        Some of what we are known for include:
+                    </p>
+                    <ul>
+                        <li><i class="bx bx-check-double"></i>Sales of brand name products alone
+                        </li>
+                        <li><i class="bx bx-check-double"></i>30 day return policy </li>
+                        <li><i class="bx bx-check-double"></i>Unmatched assistance with DIY projects</li>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section><!-- End About Section -->
+
+<!-- ======= About Section ======= -->
+<section id="about" class="about" style="background-color: white;">
+    <div class="container">
+        <div class="section-title">
+            <h2>Our <span>Parts</span></h2>
+        </div>
+    </div>
+    <div class="container-fluid">
+
+        {% for part in parts %}
+
+        <div class="row" style="margin: auto 15%;">
+
+            <div class="col-lg-6 nomobile">
+                <img style="width: 300px;
+                height: 300px;
+                float: left;
+                margin: 0px 0px 0px 40px;
+                padding: 3px;" src=" {{ url_for('static',filename= part.part_name + '.jpg') }} " alt="">
+            </div>
+
+            <div class="col-lg-6 d-flex flex-column justify-content-center align-items-stretch">
+
+                <div class="content">
+                    <h4> {{part.part_name}} </h4>
+                    <p>
+                        Price: $ {{part.part_price}}
+                    </p>
+                    <p>
+                        Stock: {{part.stock}}
+                    </p>
+                    <form action="" method="POST" , name="shop">
+                        {{form.csrf_token()}}
+                        {{form.p_id(value = part.pk)}}
+                        {{form.add()}}
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+        {% endfor %}
+        <div class="row">
+            <a style="margin: 30px auto 0px auto;" href=" {{url_for('connector.checkout')}} "><button
+                    type="button">Checkout</button></a>
+        </div>
+
+    </div>
+</section><!-- End About Section -->
+{% endblock main %}

@@ -1,0 +1,64 @@
+<!-- ======= Contact Section ======= -->
+<section id="contact" class="contact">
+    <div class="container">
+
+        <div class="section-title">
+            <h2><span>Contact</span> Us</h2>
+            <p> Why not send us a message let us know how we are doing.</p>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+
+        <div class="info-wrap">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 info">
+                    <i class="icofont-google-map"></i>
+                    <h4>Location:</h4>
+                    <p>A108 Adam Street<br>New York, NY 535022</p>
+                </div>
+
+                <div class="col-lg-3 col-md-6 info mt-4 mt-lg-0">
+                    <i class="icofont-clock-time icofont-rotate-90"></i>
+                    <h4>Open Hours:</h4>
+                    <p>Monday-Saturday:<br>11:00 AM - 2300 PM</p>
+                </div>
+
+                <div class="col-lg-3 col-md-6 info mt-4 mt-lg-0">
+                    <i class="icofont-envelope"></i>
+                    <h4>Email:</h4>
+                    <p>info@example.com<br>contact@example.com</p>
+                </div>
+
+                <div class="col-lg-3 col-md-6 info mt-4 mt-lg-0">
+                    <i class="icofont-phone"></i>
+                    <h4>Call:</h4>
+                    <p>+1 5589 55488 51<br>+1 5589 22475 14</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="php-email-form">
+            <form name="feedback" action="" method="POST">
+                {{fform.hidden_tag()}}
+                <div class="form-row">
+                    <div class="col-md-6 form-group">
+                        {{fform.name.label}} <br> {{fform.name(class_ = "form-control")}}
+                    </div>
+                    <div class="col-md-6 form-group">
+                        {{fform.email.label}} <br> {{fform.email(class_ = "form-control")}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{fform.subject.label}} <br> {{fform.subject(class_ = "form-control")}}
+                </div>
+                <div class="form-group">
+                    {{fform.message.label}} <br> {{fform.message(class_ = "form-control", rows = '8')}}
+                </div>
+                <p> {{fform.submit( class_ = "form-control col-md-3 col-sm-12" )}}</p>
+            </form>
+        </div>
+
+
+    </div>
+</section><!-- End Contact Section -->

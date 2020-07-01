@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% block main %}
+<!-- ======= Contact Section ======= -->
+<section id="contact1" class="contact" style=" margin-top: 70px;">
+
+    <div class="container mt-5 php-email-form">
+        <div class="container">
+            <div class="section-title">
+                <h2><span>Remove Meal</h2>
+            </div>
+        </div>
+        <div class="container">
+            {% for meal in menu %}
+            <form name="admin1" action="" method="post" style="margin: 20px 0px;">
+                {{remove_m.csrf_token()}}
+                <div class="row">
+                    <div class="col-lg-10 details ">
+                        <h3>{{meal.meal_name}}</h3>
+                        {{remove_m.m_id(value = meal.pk)}}
+                    </div>
+                    <div class="col-lg-2 text-center">
+                        {{remove_m.remove2()}}
+                    </div>
+                </div>
+            </form>
+            {% endfor %}
+        </div>
+        <div class="container">
+            <div class="section-title">
+                <h2><span>Add Meal</h2>
+            </div>
+        </div>
+        <form name="admin2" action="" method="post">
+            <fieldset>
+                {% with messages = get_flashed_messages(with_categories = True) %}
+                {% if messages %}
+                {% for category, message in messages %}
+                {% if category[1] == 'meal' %}
+                <div class="row alert alert-{{category[0]}}"> {{ message }} </div>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+
+
+                {{menu_form.hidden_tag()}}
+                <div class="form-group">
+                    {{menu_form.meal_name.label}} <br> {{menu_form.meal_name(class_ = "form-control")}}
+                </div>
+                <div class="form-group">
+                    {{menu_form.meal_price.label}} <br> {{menu_form.meal_price(class_ = "form-control")}}
+                </div>
+                <div class="form-group">
+                    {{menu_form.meal_description.label}} <br>
+                    {{menu_form.meal_description(class_ = "form-control",rows='8')}}
+                </div>
+                <div class="form-group">
+                    {{menu_form.meal_special.label}} <br> {{menu_form.meal_special()}}
+                </div>
+                <p> {{menu_form.submit( class_ = "form-control col-md-3 col-sm-12" )}}</p>
+            </fieldset>
+        </form>
+
+    </div>
+</section><!-- End Contact Section -->
+
+<section id="contact2" class="contact" style=" margin-top: 70px;">
+    <div class="container mt-5 php-email-form">
+        <div class="container">
+            <div class="section-title">
+                <h2><span>Add Parts</h2>
+            </div>
+        </div>
+
+        <div class="container">
+            {% for part in parts %}
+            <form name="admin3" action="" method="post">
+                {{remove_p.csrf_token()}}
+                <div class="row">
+                    <div class="col-lg-6 col-md-12 details">
+                        <h3>{{part.part_name}}</h3>
+                        <p class="font-italic"> <span>Stock: </span> {{part.stock}} </p>
+                        {{remove_p.p_id(value = part.pk)}}
+                    </div>
+                    <div class="col-lg-6 col-md-12 text-center">
+                        {{remove_p.add()}}
+                        {{remove_p.remove()}}
+                        {{remove_p.reduce_()}}
+                    </div>
+                </div>
+            </form>
+            {% endfor %}
+        </div>
+
+        <form name="admin4" action="" method="post" enctype="multipart/form-data">
+            <fieldset>
+                {% with messages = get_flashed_messages(with_categories = True) %}
+                {% if messages %}
+                {% for category, message in messages %}
+                {% if category[1] == 'part' %}
+                <div class="row alert alert-{{category[0]}}"> {{ message }} </div>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+                {{parts_form.hidden_tag()}}
+                <div class="form-group">
+                    {{parts_form.part_name.label}} <br> {{parts_form.part_name(class_ = "form-control")}}
+                </div>
+                <div class="form-group">
+                    {{parts_form.part_price.label}} <br> {{parts_form.part_price(class_ = "form-control")}}
+                </div>
+                <div class="form-group">
+                    {{parts_form.image.label}} <br> {{parts_form.image()}}
+                </div>
+                <p> {{parts_form.submit( class_ = "form-control col-md-3 col-sm-12" )}}</p>
+            </fieldset>
+        </form>
+
+    </div>
+
+</section><!-- End Contact Section -->
+
+
+{% endblock main %}

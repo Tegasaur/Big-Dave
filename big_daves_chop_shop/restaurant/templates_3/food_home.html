@@ -1,0 +1,213 @@
+{% extends "base.html" %}
+{% block main %}
+<!-- ======= Hero Section ======= -->
+<section id="hero">
+    <div class="hero-container">
+        <div id="heroCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+
+            <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+            <div class="carousel-inner" role="listbox">
+
+                <!-- Slide 1 -->
+                <div class="carousel-item active" style="background: url(assets/img/slide/slide-1.jpg);">
+                    <div class="carousel-container">
+                        <div class="carousel-content">
+                            <h2 class="animated fadeInDown"><span>Big Dave's</span> Sandwich Shop</h2>
+                            <p class="animated fadeInUp">As you get your repairs done, sit down and enjoy a meal with
+                                us. We absolutely love having you around.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="carousel-item" style="background: url(assets/img/slide/slide-2.jpg);">
+                    <div class="carousel-container">
+                        <div class="carousel-content">
+                            <h2 class="animated fadeInDown"><span>Big Dave's</span> Sandwich Shop</h2>
+                            <p class="animated fadeInUp">Enjoy grub you'll never experience anywhere else. Stuff made to
+                                make you feel completely at home with
+                                other bikers. Come on down.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <a class="carousel-control-prev" href="#heroCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon icofont-simple-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+
+            <a class="carousel-control-next" href="#heroCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon icofont-simple-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+
+        </div>
+    </div>
+</section><!-- End Hero -->
+{% with messages = get_flashed_messages(with_categories = True) %}
+{% if messages %}
+{% for category, message in messages %}
+<div class="row alert alert-{{category}}"> {{ message }} </div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-lg-12 d-flex flex-column justify-content-center align-items-stretch">
+
+                    <div class="content">
+                        <h3> Grub made with your bike in mind</h3>
+                        <p>
+                            Big dave's sandwhich shop is deep in the culture surrounding the bike industry and this
+                            enables us to provide the best possible service to our audience especially while your
+                            vehicle is being treated with the best hands over at our repair shop
+                        </p>
+                        <p class="font-italic">
+                            Some of what we are known for include:
+                        </p>
+                        <ul>
+                            <li><i class="bx bx-check-double"></i>Meals not found any where else with quality
+                                entertainment to match.
+                            </li>
+                            <li><i class="bx bx-check-double"></i>Special meal packs prepaired for quick drop-ins.</li>
+                            <li><i class="bx bx-check-double"></i>Quality bike service and parts sales over at our bike
+                                repair. </li>
+                            <li><i class="bx bx-check-double"></i>Provision for events of up to a hundred guests.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Menu Section ======= -->
+    <section id="menu" class="menu">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Our <span>Menu</span></h2>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12 d-flex justify-content-center">
+                    <ul id="menu-flters">
+                        <li data-filter="*" class="filter-active">Show All</li>
+                        <li data-filter=".filter-specialty">Specials</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row menu-container">
+                {% for meal in menu %}
+                {% if meal.meal_special %}
+                <div class="col-lg-6 menu-item filter-specialty">
+                    <div class="menu-content">
+                        <a href="#"> {{meal.meal_name}} </a><span> {{meal.meal_price}} </span>
+                    </div>
+                    <div class="menu-ingredients">
+                        {{meal.meal_description}}
+                    </div>
+                </div>
+                {% else %}
+                <div class="col-lg-6 menu-item filter-active">
+                    <div class="menu-content">
+                        <a href="#"> {{meal.meal_name}} </a><span> {{meal.meal_price}} </span>
+                    </div>
+                    <div class="menu-ingredients">
+                        {{meal.meal_description}}
+                    </div>
+                </div>
+                {% endif %}
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </section><!-- End Menu Section -->
+
+    <!-- ======= Events Section ======= -->
+    <section id="events" class="events">
+        <div class="container">
+
+            <div class="section-title">
+                <h2><span>Event</span> packages</h2>
+            </div>
+
+            <div class="owl-carousel events-carousel">
+
+                <div class="row event-item">
+                    <div class="col-lg-12 pt-4 pt-lg-0 content">
+                        <h3> Full Package </h3>
+                        <div class="price">
+                            <p><span>$299</span></p>
+                        </div>
+                        <p class="font-italic">
+                            This is our biggest package with the following perks:
+                        </p>
+                        <ul>
+                            <li><i class="icofont-check-circled"></i> Private party for just you and your guests.</li>
+                            <li><i class="icofont-check-circled"></i> 100 people maximum.</li>
+                            <li><i class="icofont-check-circled"></i> Fully catered event.</li>
+                            <li><i class="icofont-check-circled"></i> Complementary cake provided for event.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row event-item">
+                    <div class="col-lg-12 pt-4 pt-lg-0 content">
+                        <h3>Partial Package</h3>
+                        <div class="price">
+                            <p><span>$189</span></p>
+                        </div>
+                        <p class="font-italic">
+                            This is our second package. It has the following benefits :
+                        </p>
+                        <ul>
+                            <li><i class="icofont-check-circled"></i> Private party for just you and your guests.</li>
+                            <li><i class="icofont-check-circled"></i> 50 guests maximum.</li>
+                            <li><i class="icofont-check-circled"></i> Fully catered event.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row event-item">
+                    <div class="col-lg-12 pt-4 pt-lg-0 content">
+                        <h3>Family Package</h3>
+                        <div class="price">
+                            <p><span>$99</span></p>
+                        </div>
+                        <p class="font-italic">
+                            This is our smallest package made for family events
+                        </p>
+                        <ul>
+                            <li><i class="icofont-check-circled"></i> Public event (restaurant will open as usual).</li>
+                            <li><i class="icofont-check-circled"></i> 20 guest maximum.</li>
+                            <li><i class="icofont-check-circled"></i> Fully catered event.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Events Section -->
+
+    {% include "feedback.html" %}
+
+</main><!-- End #main -->
+
+{% endblock main %}

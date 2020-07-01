@@ -1,0 +1,239 @@
+{% extends "base.html" %}
+{% block main %}
+<!-- ======= Hero Section ======= -->
+<section id="hero">
+    <div class="hero-container">
+        <div id="heroCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+
+            <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+            <div class="carousel-inner" role="listbox">
+
+                <!-- Slide 1 -->
+                <div class="carousel-item active" style="background: url(assets/img/slide/slide-1.jpg);">
+                    <div class="carousel-container">
+                        <div class="carousel-content">
+                            <h2 class="animated fadeInDown"><span>Big Dave's</span> Bike Repair</h2>
+                            <p class="animated fadeInUp">
+                                We perform a massive array of services to ensure all your bike related needs are met.
+                                Check out our services below
+                            </p>
+                            <div>
+                                <a href="{{ url_for('bike_shop.parts_shop') }}"
+                                    class="btn-menu animated fadeInUp scrollto">Parts Shop</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="carousel-item" style="background: url(assets/img/slide/slide-2.jpg);">
+                    <div class="carousel-container">
+                        <div class="carousel-content">
+                            <h2 class="animated fadeInDown"><span>Big Dave's</span> Bike Repair</h2>
+                            <p class="animated fadeInUp">
+                                Check out our parts at the shop. We have stuff for all models. You'll definately find
+                                what you need.
+                            </p>
+                            <div>
+                                <a href="{{ url_for('bike_shop.parts_shop') }}"
+                                    class="btn-menu animated fadeInUp scrollto">Parts Shop</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <a class="carousel-control-prev" href="#heroCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon icofont-simple-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+
+            <a class="carousel-control-next" href="#heroCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon icofont-simple-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+
+        </div>
+    </div>
+</section><!-- End Hero -->
+{% with messages = get_flashed_messages(with_categories = True) %}
+{% if messages %}
+{% for category, message in messages %}
+<div class="row alert alert-{{category}}"> {{ message }} </div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+        <div class="container-fluid">
+
+            <div class="row">
+
+                <div class="col-lg-12 d-flex flex-column justify-content-center align-items-stretch">
+
+                    <div class="content">
+                        <h3> Big Dave's is a vet for your vehicle</h3>
+                        <p>
+                            Big dave's was established as a place for the simple bike enthusiast to come and have a good
+                            time while getting quality service, whether it be helping out with repairs or grabing a
+                            scrumptious meal at our sandwhich shop.
+                        </p>
+                        <p class="font-italic">
+                            Some of what we are known for include:
+                        </p>
+                        <ul>
+                            <li><i class="bx bx-check-double"></i> We provide services for your bike repair and checkup.
+                            </li>
+                            <li><i class="bx bx-check-double"></i> We provide parts for repair an personal projects at
+                                our
+                                <a href="#"><span>parts shop</span></a>.</li>
+                            <li><i class="bx bx-check-double"></i> We provide a place to enjoy a meal while you wait at
+                                our
+                                <a href="#"><span>sandwhich shop</span></a>.</li>
+
+                            <li><i class="bx bx-check-double"></i> We provide online delivery for your parts .
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Whu Us Section ======= -->
+    <section id="why-us" class="why-us">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Our<span> Tune Up </span>Services</h2>
+                <p>We provide the following tune up services.</p>
+            </div>
+
+            <div class="row">
+
+                <div class="col-lg-4">
+                    <div class="box">
+                        <span>Basic Tune-Up</span>
+                        <h4>$50.99</h4>
+                        <p>Recommended Annually!</p>
+                        <ul>
+                            <li>Adjust Shifting Systems</li>
+                            <li>Adjust Brakes</li>
+                            <li>Adjust Bearings</li>
+                            <li>True Wheels</li>
+                            <li>Lubricate Chain</li>
+                            <li>Basic Cleaning</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 mt-4 mt-lg-0">
+                    <div class="box">
+                        <span>Complete Tune-Up</span>
+                        <h4>$65.99</h4>
+                        <p>Basic Tune-Up Plus:</p>
+                        <ul>
+                            <li>Complete Drive Train Cleaning</li>
+                            <li>Removal of Drivetrain</li>
+                            <li>Degrease Bath & Clean</li>
+                            <li>Reassembly and Lubrication</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 mt-4 mt-lg-0">
+                    <div class="box">
+                        <span>Overhaul</span>
+                        <h4>$89.99</h4>
+                        <p>Complete Tune-Up Plus:</p>
+                        <ul>
+                            <li>Complete Disassembly and Bike Inspection</li>
+                            <li>Adjust and Grease Bearings</li>
+                            <li>Reassembly and Lubrication</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Whu Us Section -->
+
+    <!-- ======= Menu Section ======= -->
+    <section id="menu" class="menu">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Additional <span>Services</span></h2>
+            </div>
+
+            <div class="row menu-container">
+
+                <div class="col-lg-12 menu-item">
+                    <div class="menu-content">
+                        <span>Install Tire or Tube </span><span>$8.99</span>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 menu-item filter-specialty">
+                    <div class="menu-content">
+                        <span>Replace Chain</span><span>$10.99</span>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 menu-item">
+                    <div class="menu-content">
+                        <span>Wash & Lube</span><span>$14.99</span>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 menu-item filter-salads">
+                    <div class="menu-content">
+                        <span>Quick Lube</span><span>$4.99</span>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 menu-item filter-specialty">
+                    <div class="menu-content">
+                        <span>Wheel Truing</span><span>$9.99</span>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 menu-item">
+                    <div class="menu-content">
+                        <span>Adjust Brake Front or Rear</span><span>$17.99</span>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 menu-item filter-salads">
+                    <div class="menu-content">
+                        <span>Adjust Derailleur Front or Rear</span><span>$15.99</span>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 menu-item filter-salads">
+                    <div class="menu-content">
+                        <span>Box A Bike for Shipping</span><span>$8.99</span>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 menu-item filter-specialty">
+                    <div class="menu-content">
+                        <span>Build Boxed Bike</span><span>$68.99</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Menu Section -->
+    {% include "feedback.html" %}
+</main><!-- End #main -->
+{% endblock main %}
